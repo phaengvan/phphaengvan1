@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="lo">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ຮ້ານຕຳແຊບ - ຕຳລາວແຊບທີ່ສຸດໃນເມືອງ</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans Lao', 'Phetsarath OT', 'Saysettha OT', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #ff6b6b;
+            color: #fff;
+            padding: 12px 10px;
+            border: none;
+            border-radius: 30px;
+            font-weight: 500;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(255, 107, 107, 0.3);
+        }
+        
+        .btn:hover {
+            background-color: #ff5252;
+            transform: translateY(-3px);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid #ff6b6b;
+            color: #ff6b6b;
+        }
+        
+        .btn-outline:hover {
+            background-color: #ff6b6b;
+            color: #fff;
+        }
+        
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background-color: #ff6b6b;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title p {
+            color: #777;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: #333;
+        }
+        
+        .logo span {
+            color: #ff6b6b;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-left: 30px;
+        }
+        
+        .nav-menu li a {
+            color: #333;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-menu li a:hover {
+            color: #ff6b6b;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #333;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/placeholder.svg?height=800&width=1200') no-repeat center center/cover;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin-top: 70px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* About Section */
+        .about {
+            background-color: #f9f9f9;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-image {
+            position: relative;
+        }
+        
+        .about-image img {
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-image:before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 5px solid #ff6b6b;
+            border-radius: 10px;
+            top: 20px;
+            left: 20px;
+            z-index: -1;
+        }
+        
+        .about-text h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .about-text p {
+            margin-bottom: 15px;
+            color: #666;
+        }
+        
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #ffe8e8;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            color: #ff6b6b;
+            font-size: 18px;
+        }
+        
+        /* Menu Section */
+        .menu-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+        
+        .menu-tab {
+            padding: 10px 20px;
+            margin: 0 10px;
+            background-color: #f9f9f9;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .menu-tab.active {
+            background-color: #ff6b6b;
+            color: #fff;
+        }
+        
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .menu-item {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .menu-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .menu-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .menu-item:hover .menu-img img {
+            transform: scale(1.1);
+        }
+        
+        .menu-content {
+            padding: 20px;
+        }
+        
+        .menu-content h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+        
+        .menu-content p {
+            color: #666;
+            margin-bottom: 15px;
+            height: 50px;
+            overflow: hidden;
+        }
+        
+        .menu-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+        
+        .price {
+            font-size: 24px;
+            font-weight: 700;
+            color: #ff6b6b;
+        }
+        
+        .spicy-level {
+            display: flex;
+        }
+        
+        .spicy {
+            color: #ff6b6b;
+            margin-left: 2px;
+        }
+        
+        /* Special Offers */
+        .offers {
+            background-color: #f9f9f9;
+        }
+        
+        .offers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .offer-card {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .offer-tag {
+            position: absolute;
+            top: 20px;
+            right: 0;
+            background-color: #ff6b6b;
+            color: #fff;
+            padding: 8px 15px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .offer-img {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .offer-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .offer-content {
+            padding: 20px;
+        }
+        
+        .offer-content h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+        
+        .offer-content p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .offer-price {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .original-price {
+            font-size: 18px;
+            color: #999;
+            text-decoration: line-through;
+            margin-right: 10px;
+        }
+        
+        .discount-price {
+            font-size: 24px;
+            font-weight: 700;
+            color: #ff6b6b;
+        }
+        
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            height: 250px;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        
+        .gallery-overlay span {
+            color: #fff;
+            font-size: 24px;
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            background-color: #f9f9f9;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .testimonial-text:before {
+            content: '"';
+            font-size: 60px;
+            color: #ffe8e8;
+            position: absolute;
+            top: -20px;
+            left: -10px;
+            z-index: -1;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+        
+        .author-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            color: #777;
+            font-size: 14px;
+        }
+        
+        .rating {
+            color: #ff6b6b;
+            margin-top: 5px;
+        }
+        
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+        
+        .contact-info h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .contact-details {
+            margin-bottom: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            margin-bottom: 15px;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #ffe8e8;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: #ff6b6b;
+            font-size: 20px;
+        }
+        
+        .contact-text h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .contact-text p {
+            color: #666;
+        }
+        
+        .opening-hours {
+            margin-bottom: 30px;
+        }
+        
+        .opening-hours h4 {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        
+        .hours-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #ddd;
+        }
+        
+        .day {
+            font-weight: 500;
+        }
+        
+        .time {
+            color: #666;
+        }
+        
+        .map {
+            height: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .map img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #ff6b6b;
+        }
+        
+        .footer-column p {
+            color: #bbb;
+            margin-bottom: 15px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links li a {
+            color: #bbb;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links li a:hover {
+            color: #ff6b6b;
+        }
+        
+        .social-links {
+            display: flex;
+            margin-top: 20px;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background-color: #444;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            color: #fff;
+            transition: background-color 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background-color: #ff6b6b;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #444;
+        }
+        
+        .footer-bottom p {
+            color: #bbb;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .about-image {
+                order: -1;
+            }
+            
+            .about-image:before {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                position: relative;
+            }
+            
+            .nav-menu {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #fff;
+                padding: 20px;
+                flex-direction: column;
+                align-items: center;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                display: none;
+            }
+            
+            .nav-menu.active {
+                display: flex;
+            }
+            
+            .nav-menu li {
+                margin: 10px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .section-title h2 {
+                font-size: 28px;
+            }
+            
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+            
+            .menu-tabs {
+                flex-wrap: wrap;
+            }
+            
+            .menu-tab {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">ຮ້ານ<span>ຕຳແຊບ</span></div>
+                <button class="mobile-menu-btn">☰</button>
+                <ul class="nav-menu">
+                    <li><a href="#home">ໜ້າຫຼັກ</a></li>
+                    <li><a href="#about">ກ່ຽວກັບຮ້ານ</a></li>
+                    <li><a href="#menu">ເມນູ</a></li>
+                    <li><a href="#offers">ໂປຣໂມຊັນ</a></li>
+                    <li><a href="#gallery">ຮູບພາບ</a></li>
+                    <li><a href="#testimonials">ຄຳຄິດເຫັນ</a></li>
+                    <li><a href="#contact">ຕິດຕໍ່</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>ຕຳລາວແຊບທີ່ສຸດໃນເມືອງ</h1>
+                <p>ສຳຜັດລົດຊາດຕຳລາວແທ້ໆ ທີ່ປຸງແຕ່ງດ້ວຍວັດຖຸດິບຄຸນນະພາບດີ ສົດໃໝ່ທຸກວັນ</p>
+                <a href="#menu" class="btn">ເບິ່ງເມນູ</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>ກ່ຽວກັບຮ້ານຕຳແຊບ</h2>
+                <p>ຮ້ານຕຳແຊບ - ຮ້ານຕຳລາວແທ້ທີ່ເປີດມາແລ້ວຫຼາຍກວ່າ 10 ປີ</p>
+            </div>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="img/4a9f40d7-dd6d-4d80-91f8-cdbd66e46b62.jpg" alt="ຮ້ານຕຳແຊບ">
+                </div>
+                <div class="about-text">
+                    <h3>ຕຳລາວແທ້ ລົດຊາດດັ້ງເດີມ</h3>
+                    <p>ຮ້ານຕຳແຊບຂອງພວກເຮົາເປີດໃຫ້ບໍລິການມາແລ້ວຫຼາຍກວ່າ 10 ປີ, ເປັນຮ້ານຕຳທີ່ມີຊື່ສຽງໃນດ້ານຄວາມສົດໃໝ່ຂອງວັດຖຸດິບ ແລະ ລົດຊາດທີ່ເປັນເອກະລັກ. ພວກເຮົາໃຊ້ສູດຕຳແບບດັ້ງເດີມທີ່ສືບທອດມາຈາກຫຼາຍລຸ້ນຄົນ.</p>
+                    <p>ທຸກຈານທີ່ພວກເຮົາເສີບແມ່ນປຸງແຕ່ງດ້ວຍຄວາມພິຖີພິຖັນ, ເລືອກໃຊ້ແຕ່ວັດຖຸດິບທີ່ສົດໃໝ່ ແລະ ຄຸນນະພາບດີທີ່ສຸດ. ພວກເຮົາເຊື່ອວ່າຄວາມອ່ອຍຂອງຕຳແມ່ນຢູ່ທີ່ຄວາມສົມດຸນຂອງລົດຊາດ - ເຜັດ, ສົ້ມ, ຫວານ, ແລະ ເຄັມ.</p>
+                    <div class="about-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">✓</div>
+                            <p>ວັດຖຸດິບສົດໃໝ່ທຸກວັນ</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">✓</div>
+                            <p>ສູດຕຳດັ້ງເດີມ</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">✓</div>
+                            <p>ບໍລິການດີເລີດ</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">✓</div>
+                            <p>ບັນຍາກາດອົບອຸ່ນ</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="section menu" id="menu">
+        <div class="container">
+            <div class="section-title">
+                <h2>ເມນູຂອງພວກເຮົາ</h2>
+                <p>ຄົ້ນພົບລົດຊາດຕຳແຊບໆຫຼາກຫຼາຍຊະນິດຂອງພວກເຮົາ</p>
+            </div>
+            <div class="menu-tabs">
+                <div class="menu-tab active">ຕຳທຸກຊະນິດ</div>
+                <div class="menu-tab">ຕຳລາວ</div>
+                <div class="menu-tab">ຕຳໄທ</div>
+                <div class="menu-tab">ຕຳປູ</div>
+                <div class="menu-tab">ເຄື່ອງດື່ມ</div>
+            </div>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="menu-img">
+                        <img src="img/5182b1ce-a29b-43e7-a5ee-e74d0a7eabe9.jpg" alt="ຕຳລາວ">
+                    </div>
+                    <div class="menu-content">
+                        <h3>ຕຳລາວ</h3>
+                        <p>ຕຳລາວແທ້ ໃສ່ປາແດກ, ໝາກເຜັດ, ໝາກເລັ່ນ, ໝາກຖົ່ວ, ແລະ ໝາກນາວ</p>
+                        <div class="menu-price">
+                            <div class="price">25,000 ກີບ</div>
+                            <div class="spicy-level">
+                                <span class="spicy">🌶️</span>
+                                <span class="spicy">🌶️</span>
+                                <span class="spicy">🌶️</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-img">
+                        <img src="img/aac8eed5-39d0-4a55-9372-1d85552557a8.jpg" alt="ຕຳໝາກຮຸ່ງ">
+                    </div>
+                    <div class="menu-content">
+                        <h3>ຕຳໝາກຮຸ່ງ</h3>
+                        <p>ຕຳໝາກຮຸ່ງສົດ ໃສ່ປາແດກ, ໝາກເຜັດ, ໝາກເລັ່ນ, ແລະ ໝາກນາວ</p>
+                        <div class="menu-price">
+                            <div class="price">30,000 ກີບ</div>
+                            <div class="spicy-level">
+                                <span class="spicy">🌶️</span>
+                                <span class="spicy">🌶️</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-img">
+                        <img src="img/4a9f40d7-dd6d-4d80-91f8-cdbd66e46b62.jpg" alt="ຕຳປູ">
+                    </div>
+                    <div class="menu-content">
+                        <h3>ຕຳປູ</h3>
+                        <p>ຕຳລາວໃສ່ປູ, ໝາກເຜັດ, ໝາກເລັ່ນ, ໝາກຖົ່ວ, ແລະ ໝາກນາວ</p>
+                        <div class="menu-price">
+                            <div class="price">35,000 ກີບ</div>
+                            <div class="spicy-level">
+                                <span class="spicy">🌶️</span>
+                                <span class="spicy">🌶️</span>
+                                <span class="spicy">🌶️</span>
+                                <span class="spicy">🌶️</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-img">
+                        <img src="img/aac8eed5-39d0-4a55-9372-1d85552557a8.jpg" alt="ຕຳໄທ">
+                    </div>
+                    <div class="menu-content">
+                        <h3>ຕຳໄທ</h3>
+                        <p>ຕຳໄທໃສ່ນ້ຳປາ, ໝາກເຜັດ, ໝາກເລັ່ນ, ໝາກຖົ່ວ, ແລະ ໝາກນາວ</p>
+                        <div class="menu-price">
+                            <div class="price">25,000 ກີບ</div>
+                            <div class="spicy-level">
+                                <span class="spicy">🌶️</span>
+                                <span class="spicy">🌶️</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-img">
+                        <img src="img/4a9f40d7-dd6d-4d80-91f8-cdbd66e46b62.jpg" alt="ຕຳທະເລ">
+                    </div>
+                    <div class="menu-content">
+                        <h3>ຕຳທະເລ</h3>
+                        <p>ຕຳລາວໃສ່ກຸ້ງ, ປາມຶກ, ຫອຍແຄງ, ໝາກເຜັດ, ໝາກເລັ່ນ, ແລະ ໝາກນາວ</p>
+                        <div class="menu-price">
+                            <div class="price">45,000 ກີບ</div>
+                            <div class="spicy-level">
+                                <span class="spicy">🌶️</span>
+                                <span class="spicy">🌶️</span>
+                                <span class="spicy">🌶️</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-img">
+                        <img src="img/5182b1ce-a29b-43e7-a5ee-e74d0a7eabe9.jpg" alt="ຕຳຊີ້ນຍ່າງ">
+                    </div>
+                    <div class="menu-content">
+                        <h3>ຕຳຊີ້ນຍ່າງ</h3>
+                        <p>ຕຳລາວເສີບພ້ອມຊີ້ນງົວຍ່າງ, ໝາກເຜັດ, ໝາກເລັ່ນ, ແລະ ໝາກນາວ</p>
+                        <div class="menu-price">
+                            <div class="price">40,000 ກີບ</div>
+                            <div class="spicy-level">
+                                <span class="spicy">🌶️</span>
+                                <span class="spicy">🌶️</span>
+                                <span class="spicy">🌶️</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Offers -->
+    <section class="section offers" id="offers">
+        <div class="container">
+            <div class="section-title">
+                <h2>ໂປຣໂມຊັນພິເສດ</h2>
+                <p>ໂປຣໂມຊັນພິເສດປະຈຳເດືອນນີ້ສຳລັບລູກຄ້າທີ່ພວກເຮົາຮັກ</p>
+            </div>
+            <div class="offers-grid">
+                <div class="offer-card">
+                    <div class="offer-tag">ລາຄາພິເສດ</div>
+                    <div class="offer-img">
+                        <img src="img/cc358b16-f9cb-467e-84d5-d81aae436c0d.jpg" alt="ຊຸດຕຳພິເສດ">
+                    </div>
+                    <div class="offer-content">
+                        <h3>ຊຸດຕຳພິເສດ</h3>
+                        <p>ຕຳລາວ + ຕຳໄທ + ນ້ຳດື່ມ 2 ຂວດ ລາຄາພິເສດ</p>
+                        <div class="offer-price">
+                            <div class="original-price">60,000 ກີບ</div>
+                            <div class="discount-price">45,000 ກີບ</div>
+                        </div>
+                        <a href="#" class="btn btn-outline">ສັ່ງດຽວນີ້</a>
+                    </div>
+                </div>
+                <div class="offer-card">
+                    <div class="offer-tag">ຊຸດຄອບຄົວ</div>
+                    <div class="offer-img">
+                        <img src="img/b4b0dfba-4bac-4fe7-bbd7-c9db50460751.jpg" alt="ຊຸດຄອບຄົວ">
+                    </div>
+                    <div class="offer-content">
+                        <h3>ຊຸດຄອບຄົວ</h3>
+                        <p>ຕຳລາວ + ຕຳປູ + ຕຳໄທ + ຕຳທະເລ + ນ້ຳດື່ມ 4 ຂວດ</p>
+                        <div class="offer-price">
+                            <div class="original-price">130,000 ກີບ</div>
+                            <div class="discount-price">100,000 ກີບ</div>
+                        </div>
+                        <a href="#" class="btn btn-outline">ສັ່ງດຽວນີ້</a>
+                    </div>
+                </div>
+                <div class="offer-card">
+                    <div class="offer-tag">ມື້ພິເສດ</div>
+                    <div class="offer-img">
+                        <img src="img/aac8eed5-39d0-4a55-9372-1d85552557a8.jpg" alt="ໂປຣໂມຊັນວັນຈັນ">
+                    </div>
+                    <div class="offer-content">
+                        <h3>ໂປຣໂມຊັນວັນຈັນ</h3>
+                        <p>ຊື້ຕຳ 1 ຈານ ແຖມຟຣີ 1 ຈານ ທຸກໆວັນຈັນ</p>
+                        <div class="offer-price">
+                            <div class="discount-price">ຊື້ 1 ແຖມ 1</div>
+                        </div>
+                        <a href="#" class="btn btn-outline">ລາຍລະອຽດເພີ່ມເຕີມ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="section gallery" id="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>ຮູບພາບຂອງພວກເຮົາ</h2>
+                <p>ຮູບພາບຕຳແຊບໆແລະບັນຍາກາດຂອງຮ້ານ</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="img/6346c4f2-f626-4728-b958-67c25d8ed29c.jpg" alt="ຮູບພາບຕຳ 1">
+                    <div class="gallery-overlay">
+                        <span>+</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="img/3236847a-3a3f-417f-b11a-fd3774f2896d.jpg" alt="ຮູບພາບຕຳ 2">
+                    <div class="gallery-overlay">
+                        <span>+</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="img/5182b1ce-a29b-43e7-a5ee-e74d0a7eabe9.jpg" alt="ຮູບພາບຕຳ 3">
+                    <div class="gallery-overlay">
+                        <span>+</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="img/6346c4f2-f626-4728-b958-67c25d8ed29c.jpg" alt="ຮູບພາບຕຳ 4">
+                    <div class="gallery-overlay">
+                        <span>+</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="img/aac8eed5-39d0-4a55-9372-1d85552557a8.jpg" alt="ຮູບພາບຕຳ 5">
+                    <div class="gallery-overlay">
+                        <span>+</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="img/b4b0dfba-4bac-4fe7-bbd7-c9db50460751.jpg" alt="ຮູບພາບຕຳ 6">
+                    <div class="gallery-overlay">
+                        <span>+</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="img/5182b1ce-a29b-43e7-a5ee-e74d0a7eabe9.jpg" alt="ຮູບພາບຕຳ 7">
+                    <div class="gallery-overlay">
+                        <span>+</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="img/3236847a-3a3f-417f-b11a-fd3774f2896d.jpg" alt="ຮູບພາບຕຳ 8">
+                    <div class="gallery-overlay">
+                        <span>+</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>ຄຳຄິດເຫັນຈາກລູກຄ້າ</h2>
+                <p>ສິ່ງທີ່ລູກຄ້າຂອງພວກເຮົາເວົ້າກ່ຽວກັບຮ້ານຕຳແຊບ</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        <p>ຕຳລາວທີ່ນີ້ແຊບທີ່ສຸດທີ່ເຄີຍກິນມາ. ລົດຊາດດັ້ງເດີມແທ້ໆ, ວັດຖຸດິບສົດໃໝ່, ແລະ ການບໍລິການກໍ່ດີຫຼາຍ. ຂ້ອຍມາກິນເປັນປະຈຳ!</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="/placeholder.svg?height=60&width=60" alt="ລູກຄ້າ 1">
+                        </div>
+                        <div class="author-info">
+                            <h4>ນາງ ຈັນພອນ</h4>
+                            <p>ລູກຄ້າປະຈຳ</p>
+                            <div class="rating">★★★★★</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        <p>ຂ້ອຍມັກຕຳປູຂອງຮ້ານນີ້ຫຼາຍ. ປູສົດ, ລົດຊາດກຳລັງດີ, ບໍ່ເຜັດເກີນໄປ. ບັນຍາກາດຂອງຮ້ານກໍ່ດີ, ສະອາດ ແລະ ເປັນກັນເອງ.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="/placeholder.svg?height=60&width=60" alt="ລູກຄ້າ 2">
+                        </div>
+                        <div class="author-info">
+                            <h4>ທ້າວ ນຸນີ່</h4>
+                            <p>ນັກທ່ອງທ່ຽວ</p>
+                            <div class="rating">★★★★☆</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        <p>ຂ້ອຍພາຄອບຄົວມາກິນຕຳທີ່ນີ້ເປັນປະຈຳ. ລາຄາບໍ່ແພງ, ອາຫານແຊບ, ແລະ ເຈົ້າຂອງຮ້ານເປັນກັນເອງຫຼາຍ. ແນະນຳໃຫ້ລອງຕຳທະເລ!</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="/placeholder.svg?height=60&width=60" alt="ລູກຄ້າ 3">
+                        </div>
+                        <div class="author-info">
+                            <h4>ນາງ ວັນນະກອນ</h4>
+                            <p>ລູກຄ້າປະຈຳ</p>
+                            <div class="rating">★★★★★</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>ຕິດຕໍ່ພວກເຮົາ</h2>
+                <p>ມາຢ້ຽມຢາມຮ້ານຕຳແຊບຂອງພວກເຮົາ ຫຼື ຕິດຕໍ່ພວກເຮົາສຳລັບການສັ່ງອາຫານ</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>ຂໍ້ມູນຕິດຕໍ່</h3>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">📍</div>
+                            <div class="contact-text">
+                                <h4>ທີ່ຕັ້ງ</h4>
+                                <p>123 ຖະໜົນດົງປາລານ, ບ້ານສີສະຫວາດ, ນະຄອນຫຼວງວຽງຈັນ</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">📱</div>
+                            <div class="contact-text">
+                                <h4>ໂທລະສັບ</h4>
+                                <p>020 78148693</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">✉️</div>
+                            <div class="contact-text">
+                                <h4>ອີເມວ</h4>
+                                <p>phangvansvk@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="opening-hours">
+                        <h4>ເວລາເປີດບໍລິການ</h4>
+                        <div class="hours-item">
+                            <div class="day">ວັນຈັນ - ວັນສຸກ</div>
+                            <div class="time">10:00 - 21:00</div>
+                        </div>
+                        <div class="hours-item">
+                            <div class="day">ວັນເສົາ - ວັນອາທິດ</div>
+                            <div class="time">09:00 - 22:00</div>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">f</a>
+                        <a href="#" class="social-link">ig</a>
+                        <a href="#" class="social-link">tw</a>
+                    </div>
+                </div>
+                <div class="map">
+                    <img src="/placeholder.svg?height=300&width=600" alt="ແຜນທີ່">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>ຮ້ານຕຳແຊບ</h3>
+                    <p>ຮ້ານຕຳລາວແທ້ທີ່ເປີດໃຫ້ບໍລິການມາແລ້ວຫຼາຍກວ່າ 10 ປີ, ເປັນຮ້ານຕຳທີ່ມີຊື່ສຽງໃນດ້ານຄວາມສົດໃໝ່ຂອງວັດຖຸດິບ ແລະ ລົດຊາດທີ່ເປັນເອກະລັກ.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>ລິ້ງຄ໌ດ່ວນ</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">ໜ້າຫຼັກ</a></li>
+                        <li><a href="#about">ກ່ຽວກັບຮ້ານ</a></li>
+                        <li><a href="#menu">ເມນູ</a></li>
+                        <li><a href="#offers">ໂປຣໂມຊັນ</a></li>
+                        <li><a href="#gallery">ຮູບພາບ</a></li>
+                        <li><a href="#contact">ຕິດຕໍ່</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>ຕິດຕໍ່ພວກເຮົາ</h3>
+                    <ul class="footer-links">
+                        <li>123 ຖະໜົນຫ້ວຍຮົງ, ບ້ານຕານມີໄຊ</li>
+                        <li>ນະຄອນຫຼວງວຽງຈັນ, ລາວ</li>
+                        <li>ໂທ: 020 78148693</li>
+                        <li>ອີເມວ: phangvansvk@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ຮ້ານຕຳແຊບ. ສະຫງວນລິຂະສິດທັງໝົດ.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
